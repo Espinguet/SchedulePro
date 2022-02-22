@@ -1,0 +1,213 @@
+import tkinter
+from tkinter import *
+
+ventana = Tk()
+ventana.title("SchedulePro")
+ventana.geometry("870x550")
+ventana.configure(background = 'grey24')
+
+#Imagen
+#logo = tkinter.PhotoImage(file = 'Schedulelogo.JPG')
+#lblMensaje = tkinter.Label(ventana, image = logo).grid(row = 0, column = 3, rowspan = 2, columnspan = 2, padx = 10, pady = 5)
+
+#Entrada
+
+etiqueta_establecer = Label(ventana, text = "Establir horari:", font = ("Calibri 20"), bg = 'grey24', fg = 'white')
+etiqueta_entrada = Label(ventana, text = "Hora d'entrada:", font = ("Calibri 18"), bg = 'grey24', fg = 'white')
+etiqueta_sortida = Label(ventana, text = "Hora de sortida:", font = ("Calibri 18"), bg = 'grey24', fg = 'white')
+
+etiqueta_establecer.grid(row = 0, column = 0, padx = 10, pady = 5)
+etiqueta_entrada.grid(row = 1, column = 1, padx = 10, pady = 5)
+etiqueta_sortida.grid(row = 1, column = 2, padx = 10, pady = 5)
+
+#Días
+lunes = Label(ventana, text = "Dilluns", font = ("Calibri 15"), bg = 'grey24', fg = 'white')
+martes = Label(ventana, text = "Dimarts", font = ("Calibri 15"), bg = 'grey24', fg = 'white')
+miercoles = Label(ventana, text = "Dimecres", font = ("Calibri 15"), bg = 'grey24', fg = 'white')
+jueves = Label(ventana, text = "Dijous", font = ("Calibri 15"), bg = 'grey24', fg = 'white')
+viernes = Label(ventana, text = "Divendres", font = ("Calibri 15"), bg = 'grey24', fg = 'white')
+sabado = Label(ventana, text = "Dissabte", font = ("Calibri 15"), bg = 'grey24', fg = 'white')
+domingo = Label(ventana, text = "Diumenge", font = ("Calibri 15"), bg = 'grey24', fg = 'white')
+
+lunes.grid(row = 2, column = 0, padx = 10, pady = 5 )
+martes.grid(row = 3, column = 0, padx = 10, pady = 5 )
+miercoles.grid(row = 4, column = 0, padx = 10, pady = 5 )
+jueves.grid(row = 5, column = 0, padx = 10, pady = 5 )
+viernes.grid(row = 6, column = 0, padx = 10, pady = 5 )
+sabado.grid(row = 7, column = 0, padx = 10, pady = 5 )
+domingo.grid(row = 8, column = 0, padx = 10, pady = 5 )
+
+#Horas de entrada
+entrada1 =Entry(ventana, font = ("Calibri 15"))
+entrada2 =Entry(ventana, font = ("Calibri 15"))
+entrada3 =Entry(ventana, font = ("Calibri 15"))
+entrada4 =Entry(ventana, font = ("Calibri 15"))
+entrada5 =Entry(ventana, font = ("Calibri 15"))
+entrada6 =Entry(ventana, font = ("Calibri 15"))
+entrada7 =Entry(ventana, font = ("Calibri 15"))
+
+entrada1.grid(row = 2, column = 1, padx = 10, pady = 5 )
+entrada2.grid(row = 3, column = 1, padx = 10, pady = 5 )
+entrada3.grid(row = 4, column = 1, padx = 10, pady = 5 )
+entrada4.grid(row = 5, column = 1, padx = 10, pady = 5 )
+entrada5.grid(row = 6, column = 1, padx = 10, pady = 5 )
+entrada6.grid(row = 7, column = 1, padx = 10, pady = 5 )
+entrada7.grid(row = 8, column = 1, padx = 10, pady = 5 )
+
+#Horas de salida
+sortida1 =Entry(ventana, font = ("Calibri 15"))
+sortida2 =Entry(ventana, font = ("Calibri 15"))
+sortida3 =Entry(ventana, font = ("Calibri 15"))
+sortida4 =Entry(ventana, font = ("Calibri 15"))
+sortida5 =Entry(ventana, font = ("Calibri 15"))
+sortida6 =Entry(ventana, font = ("Calibri 15"))
+sortida7 =Entry(ventana, font = ("Calibri 15"))
+
+sortida1.grid(row = 2, column = 2, padx = 10, pady = 5 )
+sortida2.grid(row = 3, column = 2, padx = 10, pady = 5 )
+sortida3.grid(row = 4, column = 2, padx = 10, pady = 5 )
+sortida4.grid(row = 5, column = 2, padx = 10, pady = 5 )
+sortida5.grid(row = 6, column = 2, padx = 10, pady = 5 )
+sortida6.grid(row = 7, column = 2, padx = 10, pady = 5 )
+sortida7.grid(row = 8, column = 2, padx = 10, pady = 5 )
+
+#Número trabajadores
+Num_trab = Label(ventana, text = "Número de treballadors:", font = ("Calibri 15"), bg = 'grey24', fg = 'white')
+Num = Entry(ventana, font = ("Calibri"))
+
+Num_trab.grid(row = 9, column = 1, padx = 10, pady = 5 )
+Num.grid(row = 9, column = 2, padx = 10, pady = 5)
+
+key = Label(ventana, text = "Important: Introduir horari entre 00:00h i 23:59h", font = ("Calibri 15"), bg = 'grey24', fg = 'white')
+key.grid(row = 10, column = 1, columnspan = 2, padx = 10, pady = 10 )
+
+#Botón cambio de ventana
+def envia_boton():
+    n = int(Num.get())
+    ventana_nueva1 = Toplevel()
+    ventana_nueva1.geometry("800x500")
+    ventana_nueva1.title("Treballadors")
+    ventana_nueva1.configure(bg = 'grey24')
+
+
+
+    #Entrada 2
+    etiqueta_treballador = Label(ventana_nueva1, text="Establir tasques:", font=("Calibri 20"), bg = 'grey24', fg = 'white')
+    etiqueta_nom = Label(ventana_nueva1, text="Nom del treballador:", font=("Calibri 18"), bg = 'grey24', fg = 'white')
+    etiqueta_tasca = Label(ventana_nueva1, text="Tasca assignada:", font=("Calibri 18"), bg = 'grey24', fg = 'white')
+
+    etiqueta_treballador.grid(row=0, column=0, padx=10, pady=5)
+    etiqueta_nom.grid(row=1, column=0, padx=10, pady=5)
+    etiqueta_tasca.grid(row=1, column=1, padx=10, pady=5)
+
+    #def calcular_boton():
+
+
+    calcular = Button(ventana_nueva1, text="Calcular",
+                     font=("Calibri 15"),
+                     bg="red",
+                     fg="white",
+                     bd=7.5,
+                     cursor = "hand1",
+                     relief="groove").grid(row=10, column=5, padx=10, pady=10)
+                     #command=calcular_boton)
+
+    if n == 1:
+        treballador1 = Entry(ventana_nueva1, font=("Calibri 15"))
+        tasca1 = Entry(ventana_nueva1, font=("Calibri 15"))
+
+        treballador1.grid(row=2, column=0, padx=10, pady=5)
+        tasca1.grid(row=2, column=1, padx=10, pady=5)
+    elif n == 2:
+        treballador1 = Entry(ventana_nueva1, font=("Calibri 15"))
+        tasca1 = Entry(ventana_nueva1, font=("Calibri 15"))
+        treballador2 = Entry(ventana_nueva1, font=("Calibri 15"))
+        tasca2 = Entry(ventana_nueva1, font=("Calibri 15"))
+
+        treballador1.grid(row=2, column=0, padx=10, pady=5)
+        tasca1.grid(row=2, column=1, padx=10, pady=5)
+
+        treballador2.grid(row=3, column=0, padx=10, pady=5)
+        tasca2.grid(row=3, column=1, padx=10, pady=5)
+
+    elif n == 3:
+        treballador1 = Entry(ventana_nueva1, font=("Calibri 15"))
+        tasca1 = Entry(ventana_nueva1, font=("Calibri 15"))
+        treballador2 = Entry(ventana_nueva1, font=("Calibri 15"))
+        tasca2 = Entry(ventana_nueva1, font=("Calibri 15"))
+        treballador3 = Entry(ventana_nueva1, font=("Calibri 15"))
+        tasca3 = Entry(ventana_nueva1, font=("Calibri 15"))
+
+        treballador1.grid(row=2, column=0, padx=10, pady=5)
+        tasca1.grid(row=2, column=1, padx=10, pady=5)
+
+        treballador2.grid(row=3, column=0, padx=10, pady=5)
+        tasca2.grid(row=3, column=1, padx=10, pady=5)
+
+        treballador3.grid(row=4, column=0, padx=10, pady=5)
+        tasca3.grid(row=4, column=1, padx=10, pady=5)
+
+    elif n == 4:
+        treballador1 = Entry(ventana_nueva1, font=("Calibri 15"))
+        tasca1 = Entry(ventana_nueva1, font=("Calibri 15"))
+        treballador2 = Entry(ventana_nueva1, font=("Calibri 15"))
+        tasca2 = Entry(ventana_nueva1, font=("Calibri 15"))
+        treballador3 = Entry(ventana_nueva1, font=("Calibri 15"))
+        tasca3 = Entry(ventana_nueva1, font=("Calibri 15"))
+        treballador4 = Entry(ventana_nueva1, font=("Calibri 15"))
+        tasca4 = Entry(ventana_nueva1, font=("Calibri 15"))
+
+        treballador1.grid(row=2, column=0, padx=10, pady=5)
+        tasca1.grid(row=2, column=1, padx=10, pady=5)
+
+        treballador2.grid(row=3, column=0, padx=10, pady=5)
+        tasca2.grid(row=3, column=1, padx=10, pady=5)
+
+        treballador3.grid(row=4, column=0, padx=10, pady=5)
+        tasca3.grid(row=4, column=1, padx=10, pady=5)
+
+        treballador4.grid(row=5, column=0, padx=10, pady=5)
+        tasca4.grid(row=5, column=1, padx=10, pady=5)
+
+    elif n == 5:
+        treballador1 = Entry(ventana_nueva1, font=("Calibri 15"))
+        tasca1 = Entry(ventana_nueva1, font=("Calibri 15"))
+        treballador2 = Entry(ventana_nueva1, font=("Calibri 15"))
+        tasca2 = Entry(ventana_nueva1, font=("Calibri 15"))
+        treballador3 = Entry(ventana_nueva1, font=("Calibri 15"))
+        tasca3 = Entry(ventana_nueva1, font=("Calibri 15"))
+        treballador4 = Entry(ventana_nueva1, font=("Calibri 15"))
+        tasca4 = Entry(ventana_nueva1, font=("Calibri 15"))
+        treballador5 = Entry(ventana_nueva1, font=("Calibri 15"))
+        tasca5 = Entry(ventana_nueva1, font=("Calibri 15"))
+
+        treballador1.grid(row=2, column=0, padx=10, pady=5)
+        tasca1.grid(row=2, column=1, padx=10, pady=5)
+
+        treballador2.grid(row=3, column=0, padx=10, pady=5)
+        tasca2.grid(row=3, column=1, padx=10, pady=5)
+
+        treballador3.grid(row=4, column=0, padx=10, pady=5)
+        tasca3.grid(row=4, column=1, padx=10, pady=5)
+
+        treballador4.grid(row=5, column=0, padx=10, pady=5)
+        tasca4.grid(row=5, column=1, padx=10, pady=5)
+
+        treballador5.grid(row=6, column=0, padx=10, pady=5)
+        tasca5.grid(row=6, column=1, padx=10, pady=5)
+
+    else:
+        etiqueta_error = Label(ventana_nueva1, text="*Introdueixi un número de treballadors entre 1 i 5.", font=("Calibri 15"), bg='grey24', fg='white')
+        etiqueta_error.grid(row=2, column=0, columnspan = 3, padx=10, pady=5)
+
+envia = Button(ventana, text = "Següent",
+                        font = ("Calibri 15"),
+                        bg = "red",
+                        fg = "white",
+                        bd = 7.5,
+                        relief = "groove",
+                        cursor = "hand1",
+                        command = envia_boton).grid(row = 10, column = 6, padx = 10, pady = 10 )
+print(type(Num))
+
+ventana.mainloop()
