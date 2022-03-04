@@ -17,7 +17,7 @@ ventana.configure(background = 'grey24')
 #logo = tkinter.PhotoImage(file = 'Schedulelogo.JPG')
 #lblMensaje = tkinter.Label(ventana, image = logo).grid(row = 0, column = 3, rowspan = 2, columnspan = 2, padx = 10, pady = 5)
 
-Entrada
+#Entrada
 
 etiqueta_establecer = Label(ventana, text = "Establir horari:", 
                       font = ("Calibri 20"), bg = 'grey24', fg = 'white')
