@@ -15,12 +15,7 @@ ventana.title("SchedulePro")
 ventana.geometry("870x550")
 ventana.configure(background = 'grey24')
 
-#Imagen
-#logo = tkinter.PhotoImage(file = 'Schedulelogo.JPG')
-#lblMensaje = tkinter.Label(ventana, image = logo).grid(row = 0, column = 3, rowspan = 2, columnspan = 2, padx = 10, pady = 5)
-
 #Entrada
-
 etiqueta_establecer = Label(ventana, text = "Establir horari:", 
                       font = ("Calibri 20"), bg = 'grey24', fg = 'white')
 etiqueta_entrada = Label(ventana, text = "Hora d'entrada:", 
@@ -31,6 +26,13 @@ etiqueta_sortida = Label(ventana, text = "Hora de sortida:",
 etiqueta_establecer.grid(row = 0, column = 0, padx = 10, pady = 5)
 etiqueta_entrada.grid(row = 1, column = 1, padx = 10, pady = 5)
 etiqueta_sortida.grid(row = 1, column = 2, padx = 10, pady = 5)
+
+#Càlcul d'hores
+
+def hores():
+    entr1 = clicked_1.get()
+    y = datetime.datetime().strptime(entr1, '%H %M')
+    print(y)
 
 #Días
 lunes = Label(ventana, text = "Dilluns", font = ("Calibri 15"), 
@@ -83,17 +85,31 @@ options = ["00:00", "00:30",
            "24:00", "24:30",
 ]
 
-clicked = StringVar()
+clicked_1 = StringVar()
+clicked_2 = StringVar()
+clicked_3 = StringVar()
+clicked_4 = StringVar()
+clicked_5 = StringVar()
+clicked_6 = StringVar()
+clicked_7 = StringVar()
+clicked_8 = StringVar()
+clicked_9 = StringVar()
+clicked_10 = StringVar()
+clicked_11 = StringVar()
+clicked_12 = StringVar()
+clicked_13 = StringVar()
+clicked_14 = StringVar()
+
 clicked.set(options[0])
 
 #Horas de entrada
-entrada1 = OptionMenu(ventana, clicked, *options)
-entrada2 = OptionMenu(ventana, clicked, *options)
-entrada3 = OptionMenu(ventana, clicked, *options)
-entrada4 = OptionMenu(ventana, clicked, *options)
-entrada5 = OptionMenu(ventana, clicked, *options)
-entrada6 = OptionMenu(ventana, clicked, *options)
-entrada7 = OptionMenu(ventana, clicked, *options)
+entrada1 = OptionMenu(ventana, clicked_1, *options)
+entrada2 = OptionMenu(ventana, clicked_2, *options)
+entrada3 = OptionMenu(ventana, clicked_3, *options)
+entrada4 = OptionMenu(ventana, clicked_4, *options)
+entrada5 = OptionMenu(ventana, clicked_5, *options)
+entrada6 = OptionMenu(ventana, clicked_6, *options)
+entrada7 = OptionMenu(ventana, clicked_7, *options)
 
 entrada1.grid(row = 2, column = 1, padx = 10, pady = 5 )
 entrada2.grid(row = 3, column = 1, padx = 10, pady = 5 )
@@ -104,13 +120,13 @@ entrada6.grid(row = 7, column = 1, padx = 10, pady = 5 )
 entrada7.grid(row = 8, column = 1, padx = 10, pady = 5 )
 
 #Horas de salida
-sortida1 = OptionMenu(ventana, clicked, *options)
-sortida2 = OptionMenu(ventana, clicked, *options)
-sortida3 = OptionMenu(ventana, clicked, *options)
-sortida4 = OptionMenu(ventana, clicked, *options)
-sortida5 = OptionMenu(ventana, clicked, *options)
-sortida6 = OptionMenu(ventana, clicked, *options)
-sortida7 = OptionMenu(ventana, clicked, *options)
+sortida1 = OptionMenu(ventana, clicked_8, *options)
+sortida2 = OptionMenu(ventana, clicked_9, *options)
+sortida3 = OptionMenu(ventana, clicked_10, *options)
+sortida4 = OptionMenu(ventana, clicked_11, *options)
+sortida5 = OptionMenu(ventana, clicked_12, *options)
+sortida6 = OptionMenu(ventana, clicked_13, *options)
+sortida7 = OptionMenu(ventana, clicked_14, *options)
 
 sortida1.grid(row = 2, column = 2, padx = 10, pady = 5 )
 sortida2.grid(row = 3, column = 2, padx = 10, pady = 5 )
@@ -119,11 +135,6 @@ sortida4.grid(row = 5, column = 2, padx = 10, pady = 5 )
 sortida5.grid(row = 6, column = 2, padx = 10, pady = 5 )
 sortida6.grid(row = 7, column = 2, padx = 10, pady = 5 )
 sortida7.grid(row = 8, column = 2, padx = 10, pady = 5 )
-
-#Càlcul d'hores
-
-y = datetime.datetime().strptime(entrada1, '%Y %H %M')
-print(y)
 
 #Número trabajadores
 Num_trab = Label(ventana, text = "Número de treballadors:", font = ("Calibri 15"), 
