@@ -27,37 +27,6 @@ etiqueta_establecer.grid(row = 0, column = 0, padx = 10, pady = 5)
 etiqueta_entrada.grid(row = 1, column = 1, padx = 10, pady = 5)
 etiqueta_sortida.grid(row = 1, column = 2, padx = 10, pady = 5)
 
-#Càlcul d'hores
-
-def hores():
-    entr1 = clicked_1.get()
-    y = datetime.datetime().strptime(entr1, '%H %M')
-    print(y)
-
-#Días
-lunes = Label(ventana, text = "Dilluns", font = ("Calibri 15"), 
-        bg = 'grey24', fg = 'white')
-martes = Label(ventana, text = "Dimarts", font = ("Calibri 15"), 
-         bg = 'grey24', fg = 'white')
-miercoles = Label(ventana, text = "Dimecres", font = ("Calibri 15"), 
-            bg = 'grey24', fg = 'white')
-jueves = Label(ventana, text = "Dijous", font = ("Calibri 15"), 
-         bg = 'grey24', fg = 'white')
-viernes = Label(ventana, text = "Divendres", font = ("Calibri 15"), 
-          bg = 'grey24', fg = 'white')
-sabado = Label(ventana, text = "Dissabte", font = ("Calibri 15"), 
-         bg = 'grey24', fg = 'white')
-domingo = Label(ventana, text = "Diumenge", font = ("Calibri 15"), 
-          bg = 'grey24', fg = 'white')
-
-lunes.grid(row = 2, column = 0, padx = 10, pady = 5 )
-martes.grid(row = 3, column = 0, padx = 10, pady = 5 )
-miercoles.grid(row = 4, column = 0, padx = 10, pady = 5 )
-jueves.grid(row = 5, column = 0, padx = 10, pady = 5 )
-viernes.grid(row = 6, column = 0, padx = 10, pady = 5 )
-sabado.grid(row = 7, column = 0, padx = 10, pady = 5 )
-domingo.grid(row = 8, column = 0, padx = 10, pady = 5 )
-
 options = ["00:00", "00:30",
            "01:00", "01:30",
            "02:00", "02:30",
@@ -87,54 +56,58 @@ options = ["00:00", "00:30",
 
 clicked_1 = StringVar()
 clicked_2 = StringVar()
-clicked_3 = StringVar()
-clicked_4 = StringVar()
-clicked_5 = StringVar()
-clicked_6 = StringVar()
-clicked_7 = StringVar()
-clicked_8 = StringVar()
-clicked_9 = StringVar()
-clicked_10 = StringVar()
-clicked_11 = StringVar()
-clicked_12 = StringVar()
-clicked_13 = StringVar()
-clicked_14 = StringVar()
 
-clicked.set(options[0])
+clicked_1.set(options[0])
+clicked_2.set(options[0])
 
 #Horas de entrada
 entrada1 = OptionMenu(ventana, clicked_1, *options)
-entrada2 = OptionMenu(ventana, clicked_2, *options)
-entrada3 = OptionMenu(ventana, clicked_3, *options)
-entrada4 = OptionMenu(ventana, clicked_4, *options)
-entrada5 = OptionMenu(ventana, clicked_5, *options)
-entrada6 = OptionMenu(ventana, clicked_6, *options)
-entrada7 = OptionMenu(ventana, clicked_7, *options)
+
 
 entrada1.grid(row = 2, column = 1, padx = 10, pady = 5 )
-entrada2.grid(row = 3, column = 1, padx = 10, pady = 5 )
-entrada3.grid(row = 4, column = 1, padx = 10, pady = 5 )
-entrada4.grid(row = 5, column = 1, padx = 10, pady = 5 )
-entrada5.grid(row = 6, column = 1, padx = 10, pady = 5 )
-entrada6.grid(row = 7, column = 1, padx = 10, pady = 5 )
-entrada7.grid(row = 8, column = 1, padx = 10, pady = 5 )
+
 
 #Horas de salida
-sortida1 = OptionMenu(ventana, clicked_8, *options)
-sortida2 = OptionMenu(ventana, clicked_9, *options)
-sortida3 = OptionMenu(ventana, clicked_10, *options)
-sortida4 = OptionMenu(ventana, clicked_11, *options)
-sortida5 = OptionMenu(ventana, clicked_12, *options)
-sortida6 = OptionMenu(ventana, clicked_13, *options)
-sortida7 = OptionMenu(ventana, clicked_14, *options)
+sortida1 = OptionMenu(ventana, clicked_2, *options)
+
 
 sortida1.grid(row = 2, column = 2, padx = 10, pady = 5 )
-sortida2.grid(row = 3, column = 2, padx = 10, pady = 5 )
-sortida3.grid(row = 4, column = 2, padx = 10, pady = 5 )
-sortida4.grid(row = 5, column = 2, padx = 10, pady = 5 )
-sortida5.grid(row = 6, column = 2, padx = 10, pady = 5 )
-sortida6.grid(row = 7, column = 2, padx = 10, pady = 5 )
-sortida7.grid(row = 8, column = 2, padx = 10, pady = 5 )
+
+
+#Diccionari per passar d'string a float
+combo_dict = {
+    "00:00": 00.00, "00:30": 00.50,
+    "01:00": 1.00, "01:30": 1.50,
+    "02:00": 2.00, "02:30": 2.50,
+    "03:00": 3.00, "03:30": 3.50,
+    "04:00": 4.00, "04:30": 4.50,
+    "05:00": 5.00, "05:30": 5.50,
+    "06:00": 6.00, "06:30": 6.50,
+    "07:00": 7.00, "07:30": 7.30,
+    "08:00": 8.00, "08:30": 8.50,
+    "09:00": 9.00, "09:30": 9.50,
+    "10:00": 10.00, "10:30": 10.50,
+    "11:00": 11.00, "11:30": 11.50,
+    "12:00": 12.00, "12:30": 12.50,
+    "13:00": 13.00, "13:30": 13.50,
+    "14:00": 14.00, "14:30": 14.50,
+    "15:00": 15.00, "15:30": 15.50,
+    "16:00": 16.00, "16:30": 16.50,
+    "17:00": 17.00, "17:30": 17.50,
+    "18:00": 18.00, "18:30": 18.50,
+    "19:00": 19.00, "19:30": 19.50,
+    "20:00": 20.00, "20:30": 20.50,
+    "21:00": 21.00, "21:30": 21.50,
+    "22:00": 22.00, "22:30": 22.50,
+    "23:00": 23.00, "23:30": 23.50,
+    "24:00": 24.00, "24:30": 24.50}
+
+#Calcul d'hores diaries
+hora_entrada = float(combo_dict.get(clicked_1.get(), -1))
+hora_sortida = float(combo_dict.get(clicked_1.get(), -1)) 
+
+hores_totals = hora_sortida - hora_entrada
+print(hores_totals)
 
 #Número trabajadores
 Num_trab = Label(ventana, text = "Número de treballadors:", font = ("Calibri 15"), 
@@ -259,8 +232,11 @@ def envia_boton():
                          text="*Introdueixi un número de treballadors entre 1 i 5.", 
                          font=("Calibri 15"), bg='grey24', fg='white')
         etiqueta_error.grid(row=2, column=0, columnspan = 3, padx=10, pady=5)
-        
+    
     def calcular_boton():
+        tsc1_point = ','.join(tasca1)
+        tsc1_space = ' '.join(tsc1_point)
+        print(tsc1_space)
         ventana_nueva2 = Toplevel()
         ventana_nueva2.geometry("800x500")
         ventana_nueva2.title("Horari de cada treballador")
