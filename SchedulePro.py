@@ -4,18 +4,19 @@ Created on Tue Feb 22 08:29:31 2022
 
 @author: Jordi Castillo
 """
-
+#Importem les llibreries necessaries
 import tkinter
 from tkinter import *
 from PIL import ImageTk, Image
 import datetime
 
+#Creem la finestra base
 ventana = Tk()
 ventana.title("SchedulePro")
 ventana.geometry("870x550")
 ventana.configure(background = 'grey24')
 
-#Entrada
+#Inici
 etiqueta_establecer = Label(ventana, text = "Establir horari:", 
                       font = ("Calibri 20"), bg = 'grey24', fg = 'white')
 etiqueta_entrada = Label(ventana, text = "Hora d'entrada:", 
@@ -54,6 +55,7 @@ options = ["00:00", "00:30",
            "24:00", "24:30",
 ]
 
+#Creem drop downs per seleccionar l'hora desitjada
 clicked_1 = StringVar()
 clicked_2 = StringVar()
 
@@ -62,15 +64,11 @@ clicked_2.set(options[0])
 
 #Horas de entrada
 entrada1 = OptionMenu(ventana, clicked_1, *options)
-
-
 entrada1.grid(row = 2, column = 1, padx = 10, pady = 5 )
 
 
 #Horas de salida
 sortida1 = OptionMenu(ventana, clicked_2, *options)
-
-
 sortida1.grid(row = 2, column = 2, padx = 10, pady = 5 )
 
 
@@ -109,7 +107,7 @@ hora_sortida = float(combo_dict.get(clicked_1.get(), -1))
 hores_totals = hora_sortida - hora_entrada
 print(hores_totals)
 
-#Número trabajadores
+#Número treballadors
 Num_trab = Label(ventana, text = "Número de treballadors:", font = ("Calibri 15"), 
            bg = 'grey24', fg = 'white')
 Num = Entry(ventana, font = ("Calibri"))
@@ -117,21 +115,21 @@ Num = Entry(ventana, font = ("Calibri"))
 Num_trab.grid(row = 9, column = 1, padx = 10, pady = 5 )
 Num.grid(row = 9, column = 2, padx = 10, pady = 5)
 
-key = Label(ventana, text = "Important: Introduir horari entre 00:00h i 23:59h", 
+key = Label(ventana, text = "Horari entre 00:00h i 23:59h", 
       font = ("Calibri 15"), bg = 'grey24', fg = 'white')
 key.grid(row = 10, column = 1, columnspan = 2, padx = 10, pady = 10 )
 
-#Botón cambio de ventana
+#Botó canvi de finestra
 def envia_boton():
+    #Convertim l'input que l'usuari ha donat de treballadors a un valor que poguem treballar
     n = int(Num.get())
+    #Obrim la segona finestra
     ventana_nueva1 = Toplevel()
     ventana_nueva1.geometry("800x500")
     ventana_nueva1.title("Treballadors")
     ventana_nueva1.configure(bg = 'grey24')
 
-
-
-    #Entrada 2
+    #Inici 2
     etiqueta_treballador = Label(ventana_nueva1, text="Establir tasques:", 
                            font=("Calibri 20"), bg = 'grey24', fg = 'white')
     etiqueta_nom = Label(ventana_nueva1, text="Nom del treballador:", 
@@ -142,7 +140,8 @@ def envia_boton():
     etiqueta_treballador.grid(row=0, column=0, padx=10, pady=5)
     etiqueta_nom.grid(row=1, column=0, padx=10, pady=5)
     etiqueta_tasca.grid(row=1, column=1, padx=10, pady=5)
-        
+    
+    #Segons el número de treballadors crearem mes inputs o menys.
     if n == 1:
         treballador1 = Entry(ventana_nueva1, font=("Calibri 15"))
         tasca1 = Entry(ventana_nueva1, font=("Calibri 15"))
@@ -226,7 +225,8 @@ def envia_boton():
 
         treballador5.grid(row=6, column=0, padx=10, pady=5)
         tasca5.grid(row=6, column=1, padx=10, pady=5)
-
+    
+    #Si s'introdueix un valor menor a 1 o major que 5, donarà error
     else:
         etiqueta_error = Label(ventana_nueva1, 
                          text="*Introdueixi un número de treballadors entre 1 i 5.", 
@@ -234,14 +234,18 @@ def envia_boton():
         etiqueta_error.grid(row=2, column=0, columnspan = 3, padx=10, pady=5)
     
     def calcular_boton():
+        #Es dividisin les tasques amb el seu número d'hores corresponents
         tsc1_point = ','.join(tasca1)
         tsc1_space = ' '.join(tsc1_point)
         print(tsc1_space)
+        #Obrim la tercera finestra
         ventana_nueva2 = Toplevel()
         ventana_nueva2.geometry("800x500")
         ventana_nueva2.title("Horari de cada treballador")
         ventana_nueva2.configure(bg = 'grey24')
         
+        #Segons el número de treballadors, sortiran els seus noms, les tasques
+        #i les hores que li pertoquen a cadascú.
         if n == 1:
             treb1 = treballador1.get() + ": " + tasca1.get() 
             
@@ -322,7 +326,8 @@ def envia_boton():
                     trb5 = Label(ventana_nueva2, text = treb5, font = ("Calibri 20"), 
                            bg = 'grey24', fg = 'White')
                     trb5.grid(row = 5, column = 0, padx= 10, pady = 5)
-        
+    
+    #Botó que activarà la funció "calcular_boton"
     calcular = Button(ventana_nueva1, text="Calcular",
                          font=("Calibri 15"),
                          bg="red",
@@ -332,6 +337,7 @@ def envia_boton():
                          relief="groove",
                          command = calcular_boton).grid(row=10, column=5, padx=10, pady=10)
 
+#Botó que activarà la funció "envia_boton"
 envia = Button(ventana, text = "Següent",
                         font = ("Calibri 15"),
                         bg = "red",
